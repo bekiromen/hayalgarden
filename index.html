@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hayal Garden — Düğün & Etkinlik Rehberi</title>
+
+  <!-- Stil dosyası: css/styles.css (ayrı gönderilecek) -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Site ikonunuz -->
+  <link rel="icon" href="assets/logo.png">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="img/logo.jpg" alt="Hayal Garden Logo" width="56" height="56">
+        <div class="brand-info">
+          <h1>Hayal Garden</h1>
+          <p class="tag">Düğün mekanları • Organizasyon fikirleri • Fotoğraf rehberi</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Ana menü">
+        <a href="#anasayfa">Anasayfa</a>
+        <a href="#mekanlar">Mekanlar</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#iletisim">İletişim</a>
+        <a class="admin-btn" href="admin-login.html">Admin Girişi</a>
+         <a class="admin-btn" href="blog.html">Blog</a>
+      </nav>
+
+      <button class="burger" aria-label="Menüyü aç">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="anasayfa" class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <h2>Hayalinizdeki düğünü birlikte tasarlayalım</h2>
+        <p>Özenle seçilmiş mekanlar, gerçek düğün hikâyeleri ve ilham veren görseller. Planlamadan önce fikir almak için doğru yerdesiniz.</p>
+        <p>
+          <a class="btn-primary" href="#mekanlar">Mekanları Gör</a>
+        </p>
+      </div>
+
+      <div class="hero-image">
+        <img src="img/logo-yani.png" alt="Düğün dekorasyonu" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+<!-- Rezervasyon Formu (index.html içinde) -->
+<section id="reservation-section" class="section light">
+  <div class="wrap">
+    <h3>Rezervasyon Yap</h3>
+    <form id="reservationForm">
+      <input type="text" id="resName" placeholder="İsim" required>
+      <input type="date" id="resDate" required>
+      <input type="number" id="resPeople" placeholder="Kişi Sayısı" required min="1">
+      <button type="submit">Rezervasyon Yap</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  const reservationForm = document.getElementById('reservationForm');
+
+  reservationForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('resName').value.trim();
+    const date = document.getElementById('resDate').value;
+    const people = document.getElementById('resPeople').value;
+
+    if (!name || !date || !people) {
+      alert('Lütfen tüm alanları doldurun.');
+      return;
+    }
+
+    // LocalStorage'tan eski rezervasyonları çek
+    const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+
+    // Yeni rezervasyon objesi
+    const newReservation = {
+      id: Date.now(),
+      name: name,
+      date: date,
+      people: people,
+      status: 'Beklemede'
+    };
+
+    // Listeye ekle
+    reservations.push(newReservation);
+
+    // Kaydet
+    localStorage.setItem('reservations', JSON.stringify(reservations));
+
+    // Formu sıfırla
+    reservationForm.reset();
+
+    alert('Rezervasyon isteğiniz başarıyla alındı. 🌸');
+  });
+</script>
+
+
+  <!-- KATEGORİ KUTULARI (farklı renk bloklar) -->
+  <section class="categories">
+    <div class="wrap">
+      <ul class="category-list">
+        <li class="cat-item">
+          <h3>Bahçe Mekanları</h3>
+          <p>Doğayla iç içe, rustik ve romantik seçenekler.</p>
+        </li>
+        <li class="cat-item">
+          <h3>Teras & Çatı</h3>
+          <p>Şehir manzaralı, gün batımıyla unutulmaz anlar.</p>
+        </li>
+        <li class="cat-item">
+          <h3>Salon & Kokteyl</h3>
+          <p>Kapalı ve şık organizasyonlar için ideal.</p>
+        </li>
+        <li class="cat-item">
+          <h3>Mini Düğün</h3>
+          <p>Samimi davetler, az kişiyle büyük hisler.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MEKANLAR (kart düzeni) -->
+  <section id="mekanlar" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h3>Öne Çıkan Mekanlar</h3>
+        <p class="muted">Sık tercih edilen ve yeni eklenen mekanlardan seçkiler</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Mekan kartı 1 -->
+        <article class="card">
+          <img src="img/gül-bahcesi.jpg" alt="Gül Bahçesi">
+          <div class="card-body">
+            <h4>Gül Bahçesi Davet</h4>
+            <p class="muted">100-200 kişi • Bahçe & Kapalı alan</p>
+            <p class="excerpt">Geniş otopark, vintage ışıklandırma ve canlı çiçek konseptiyle doğal bir davet.</p>
+            <p class="card-actions">
+            </p>
+          </div>
+        </article>
+
+        <!-- Mekan kartı 2 -->
+        <article class="card">
+          <img src="img/hayal.jpg" alt="Hayal Terası">
+          <div class="card-body">
+            <h4>Hayal Terası</h4>
+            <p class="muted">50-120 kişi • Teras</p>
+            <p class="excerpt">Şehir ışıkları fonunda şık ve modern bir alan; akşam organizasyonları için ideal.</p>
+            <p class="card-actions">
+            </p>
+          </div>
+        </article>
+
+        <!-- Mekan kartı 3 -->
+        <article class="card">
+          <img src="img/kır.jpg" alt="Kır Düğünü">
+          <div class="card-body">
+            <h4>Mini Kır Daveti</h4>
+            <p class="muted">30-70 kişi • Kır</p>
+            <p class="excerpt">Samimi kutlamalar için rustik dekor ve doğal ışık; çocuklar için oyun alanı mevcut.</p>
+            <p class="card-actions">
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HİZMETLER / TEDARİKÇİLER -->
+  <section id="hizmetler" class="section light">
+    <div class="wrap">
+      <h3>Hizmet Sağlayıcılar</h3>
+      <div class="service-row">
+        <div class="service">
+          <h4>Organizasyon</h4>
+          <p>Deneyimli ekiplerle baştan sona destek.</p>
+        </div>
+        <div class="service">
+          <h4>Fotoğraf & Video</h4>
+          <p>Profesyonel paketler, drone çekimleri.</p>
+        </div>
+        <div class="service">
+          <h4>Çiçek & Dekor</h4>
+          <p>Sezonluk tasarımlar ve kişiye özel uyarlamalar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERİ -->
+  <section id="galeri" class="section">
+    <div class="wrap">
+      <h3>Galeri</h3>
+      <div class="gallery-grid">
+        <img src="img/gül-bahcesi.jpg" alt="galeri1">
+        <img src="img/hayal.jpg" alt="galeri2">
+        <img src="img/kır.jpg" alt="galeri3">
+        <img src="img/logo.jpg" alt="galeri4">
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG KISMI -->
+  <section id="blog" class="section light">
+    <div class="wrap">
+      <h3>Son Yazılar</h3>
+      <div class="posts-grid">
+        <article class="post">
+          <h4>Sade ve Şık: Minimal Düğün Fikirleri</h4>
+          <p class="muted">İlham verici küçük detaylarla büyük etkiler yaratın.</p>
+          
+        </article>
+
+        <article class="post">
+          <h4>Mevsimlik Çiçek Seçimleri</h4>
+          <p class="muted">2026 trendleri ve bütçe dostu öneriler.</p>
+          /a>
+        </article>
+
+        <article class="post">
+          <h4>Masa Düzeni Rehberi</h4>
+          <p class="muted">Konukları rahat ettiren pratik düzenler.</p>
+          
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="iletisim" class="section contact">
+    <div class="wrap contact-wrap">
+      <div class="contact-card">
+        <h3>Bize Ulaşın</h3>
+        <form class="contact-form" action="#" method="post">
+          <label>
+            <span>Adınız</span>
+            <input type="text" name="name" placeholder="Adınız">
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="email@ornek.com">
+          </label>
+
+          <label>
+            <span>Mesaj</span>
+            <textarea name="message" rows="4" placeholder="Kısa mesajınız..."></textarea>
+          </label>
+
+          <button class="btn-primary" type="submit">Gönder</button>
+        </form>
+      </div>
+
+      <aside class="contact-info">
+        <h4>İletişim Bilgileri</h4>
+        <p>Telefon: +90 555 000 00 00</p>
+        <p>Email: hayalgardenornek@gmail.com</p>
+        <p>Adres: Çankırı/Merkez</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="copyright">© <span id="year"></span> Hayal Garden — Tüm hakları saklıdır.</div>
+      <nav class="tiny-nav">
+        <a href="#">Gizlilik</a>
+        <a href="#">KVKK</a>
+        <a href="#">S.S.S.</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Ana JS dosyası: js/main.js (ayrı gönderilecek) -->
+  <script>
+    // Küçük yardımcılar: yıl gösterme ve mobil menü
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobil menü toggle
+    (function(){
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.main-nav');
+      burger && burger.addEventListener('click', ()=> nav.classList.toggle('open'));
+    })();
+  </script>
+</body>
+</html>
