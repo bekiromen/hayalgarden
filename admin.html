@@ -97,6 +97,44 @@
     </main>
   </div>
 
-  <script src="js/admin.js"></script>
+
+
+  <script src="js/admin.js">
+
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryGrid = document.querySelector('.gallery-grid');
+  const savedGallery = JSON.parse(localStorage.getItem('gallery')) || [];
+
+  if (galleryGrid && savedGallery.length) {
+    galleryGrid.innerHTML = savedGallery.map(src => `<img src="${src}" alt="galeri">`).join('');
+  }
+});
+
+
+  </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // BLOG
+  const postsGrid = document.querySelector('.posts-grid');
+  const savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+  if (savedPosts.length && postsGrid) {
+    postsGrid.innerHTML = savedPosts.map(post => `
+      <article class="post">
+        <h4>${post.title}</h4>
+        <p class="muted">${post.content}</p>
+      </article>
+    `).join('');
+  }
+
+  // GALERİ
+  const galleryGrid = document.querySelector('.gallery-grid');
+  const savedGallery = JSON.parse(localStorage.getItem('gallery')) || [];
+  if (galleryGrid && savedGallery.length) {
+    galleryGrid.innerHTML = savedGallery.map(src => `<img src="${src}" alt="galeri">`).join('');
+  }
+});
+</script>
+
+
 </body>
 </html>
