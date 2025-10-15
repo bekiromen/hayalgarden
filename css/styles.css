@@ -17,32 +17,31 @@
 }
 
 /* ===============================
-   GALERİ (düzenlenmiş)
+   GALERİ - Kare ve yan yana dizilim
    =============================== */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px; /* kareler arası boşluk */
   margin-top: 30px;
-  align-items: center;
-  justify-items: center;
 }
 
 .gallery-grid img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;          /* kare görünüm */
-  object-fit: contain;          /* kırpma yok */
-  background-color: #f8f8f8;    /* boşluklarda zarif gri */
+  width: 180px;       /* kare genişliği */
+  height: 180px;      /* kare yüksekliği */
+  object-fit: contain; /* görselin tamamı görünsün, kırpma olmasın */
+  background-color: #f3f3f3; /* gri arka plan */
   border-radius: 10px;
   box-shadow: var(--shadow);
-  padding: 5px;                 /* görsel taşmasın diye küçük iç boşluk */
-  transition: transform 0.25s;
+  padding: 4px;        /* kenar boşluğu */
+  transition: transform 0.2s ease;
 }
 
 .gallery-grid img:hover {
   transform: scale(1.03);
 }
+
 
 
 
@@ -561,4 +560,5 @@ a {
     display: block;
   }
 }
+
 
