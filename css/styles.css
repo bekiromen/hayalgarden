@@ -16,6 +16,37 @@
   --shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30px, 1fr)); /* önce 60px ise yarıya düştü */
+  gap: 3px; /* aralarındaki boşluk da yarıya düştü */
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* kare yapar */
+  object-fit: contain;  /* kırpmadan sığdırır */
+  background-color: #f0f0f0;
+  border-radius: 2px;   /* köşeleri biraz daha küçük */
+  display: block;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* çok küçük kare */
+  gap: 6px; /* aralarındaki boşluk azaltıldı */
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* kare yap */
+  object-fit: contain;  /* görseli kırpma, kutuya sığdır */
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  display: block;
+}
+
+
 * {
   box-sizing: border-box;
   margin: 0;
