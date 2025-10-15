@@ -28,8 +28,8 @@
 }
 
 .gallery-grid img {
-  width: 180px;       /* kare genişliği */
-  height: 180px;      /* kare yüksekliği */
+  width: 220px;       /* kare genişliği */
+  height: 220px;      /* kare yüksekliği */
   object-fit: contain; /* görselin tamamı görünsün, kırpma olmasın */
   background-color: #f3f3f3; /* gri arka plan */
   border-radius: 10px;
@@ -560,5 +560,6 @@ a {
     display: block;
   }
 }
+
 
 
