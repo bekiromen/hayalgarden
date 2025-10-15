@@ -23,26 +23,22 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px; /* kareler arası boşluk */
+  gap: 12px;
   margin-top: 30px;
 }
 
 .gallery-grid img {
-  width: 220px;       /* kare genişliği */
-  height: 220px;      /* kare yüksekliği */
-  object-fit: contain; /* görselin tamamı görünsün, kırpma olmasın */
-  background-color: #f3f3f3; /* gri arka plan */
+  width: 220px;       /* kare boyutu */
+  height: 220px;
+  object-fit: cover;  /* görsel tam kareyi doldurur */
   border-radius: 10px;
   box-shadow: var(--shadow);
-  padding: 4px;        /* kenar boşluğu */
   transition: transform 0.2s ease;
 }
 
 .gallery-grid img:hover {
   transform: scale(1.03);
 }
-
-
 
 
 * {
@@ -560,6 +556,7 @@ a {
     display: block;
   }
 }
+
 
 
 
