@@ -94,6 +94,26 @@
       status: 'Beklemede'
     };
 
+    // BLOG YAZILARINI LOCALSTORAGE'DAN ÇEK
+const postsGrid = document.querySelector('.posts-grid');
+const savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+if (savedPosts.length) {
+  postsGrid.innerHTML = savedPosts.map(p => `
+    <article class="post">
+      <h4>${p.title}</h4>
+      <p class="muted">${p.content}</p>
+    </article>
+  `).join('');
+}
+
+// GALERİYİ LOCALSTORAGE'DAN ÇEK
+const galleryGrid = document.querySelector('.gallery-grid');
+const savedGallery = JSON.parse(localStorage.getItem('gallery')) || [];
+if (savedGallery.length) {
+  galleryGrid.innerHTML = savedGallery.map(src => `<img src="${src}" alt="galeri">`).join('');
+}
+
+
     // Listeye ekle
     reservations.push(newReservation);
 
@@ -298,5 +318,34 @@
       burger && burger.addEventListener('click', ()=> nav.classList.toggle('open'));
     })();
   </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const postsGrid = document.querySelector(".posts-grid");
+    const savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+
+    if (savedPosts.length > 0 && postsGrid) {
+      postsGrid.innerHTML = savedPosts.map(post => `
+        <article class="post">
+          <h4>${post.title}</h4>
+          <p class="muted">${post.content}</p>
+        </article>
+      `).join('');
+    }
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryGrid = document.querySelector('.gallery-grid');
+  const savedGallery = JSON.parse(localStorage.getItem('gallery')) || [];
+
+  if (galleryGrid && savedGallery.length > 0) {
+    galleryGrid.innerHTML = savedGallery.map(src => `<img src="${src}" alt="galeri">`).join('');
+  }
+});
+</script>
+
+
 </body>
 </html>
