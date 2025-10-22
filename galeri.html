@@ -177,25 +177,27 @@
   <!-- JS -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
     const burger = document.querySelector(".burger");
     const nav = document.querySelector(".main-nav");
     burger && burger.addEventListener("click", () => nav.classList.toggle("open"));
 
-    // Filtreleme
-    const filterButtons = document.querySelectorAll(".gallery-filter button");
+    // GALERİ
     const galleryGrid = document.getElementById('galleryGrid');
+    const filterButtons = document.querySelectorAll(".gallery-filter button");
 
     function renderGallery() {
       const savedGallery = JSON.parse(localStorage.getItem('gallery')) || [];
-      galleryGrid.innerHTML = savedGallery.map(src => `
-        <div class="gallery-item" data-type="all">
-          <img src="${src}" alt="galeri">
+      galleryGrid.innerHTML = savedGallery.map(item => `
+        <div class="gallery-item" data-type="${item.category}">
+          <img src="${item.src}" alt="galeri">
         </div>
       `).join('');
     }
 
     renderGallery();
 
+    // Filtreleme
     filterButtons.forEach(btn => {
       btn.addEventListener("click", () => {
         filterButtons.forEach(b => b.classList.remove("active"));
@@ -208,7 +210,7 @@
       });
     });
 
-    // Lightbox
+    // LIGHTBOX
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImg");
     const lightboxClose = document.getElementById("lightboxClose");
@@ -220,13 +222,8 @@
       }
     });
 
-    lightboxClose.addEventListener("click", () => {
-      lightbox.classList.remove("active");
-    });
-
-    lightbox.addEventListener("click", e => {
-      if (e.target === lightbox) lightbox.classList.remove("active");
-    });
+    lightboxClose.addEventListener("click", () => lightbox.classList.remove("active"));
+    lightbox.addEventListener("click", e => { if (e.target === lightbox) lightbox.classList.remove("active"); });
   </script>
 </body>
 </html>
