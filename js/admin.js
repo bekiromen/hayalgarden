@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   // --- MENÜ GEÇİŞLERİ ---
   const menuItems = document.querySelectorAll('.sidebar li[data-section]');
   const panels = document.querySelectorAll('.panel');
@@ -61,17 +62,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- GALERİ ---
   const uploadImage = document.getElementById('uploadImage');
+  const imageCategory = document.getElementById('imageCategory');
   const galleryPreview = document.getElementById('galleryPreview');
 
   let gallery = JSON.parse(localStorage.getItem('gallery')) || [];
 
   function renderGallery() {
     galleryPreview.innerHTML = "";
-    gallery.forEach((src, index) => {
+    gallery.forEach((item, index) => {
       const div = document.createElement('div');
       div.classList.add('gallery-item');
+      div.dataset.type = item.category; // Kategori
       div.innerHTML = `
-        <img src="${src}" alt="gallery-${index}">
+        <img src="${item.src}" alt="gallery-${index}">
         <button class="deleteBtn" data-index="${index}">Sil</button>
       `;
       galleryPreview.appendChild(div);
@@ -87,7 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const reader = new FileReader();
     reader.onload = function(event) {
-      gallery.push(event.target.result);
+      const newImage = {
+        src: event.target.result,
+        category: imageCategory.value // Seçilen kategori
+      };
+      gallery.push(newImage);
       localStorage.setItem('gallery', JSON.stringify(gallery));
       renderGallery();
       e.target.value = "";
@@ -103,10 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
       renderGallery();
     }
   });
-
-  // Galeri dizisini localStorage'a kaydet
-localStorage.setItem('gallery', JSON.stringify(gallery));
-
 
   // --- REZERVASYONLAR ---
   const reservationTable = document.getElementById('reservationTable');
@@ -146,4 +149,5 @@ localStorage.setItem('gallery', JSON.stringify(gallery));
       renderReservations();
     }
   });
+
 });
