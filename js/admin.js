@@ -20,18 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const postContent = document.getElementById('postContent');
   const addPostBtn = document.getElementById('addPostBtn');
   const postList = document.getElementById('postList');
-
   let posts = JSON.parse(localStorage.getItem('posts')) || [];
 
   function renderPosts() {
     postList.innerHTML = "";
     posts.forEach((post, index) => {
       const li = document.createElement('li');
-      li.innerHTML = `
-        <h4>${post.title}</h4>
-        <p>${post.content}</p>
-        <button data-index="${index}" class="deletePost">Sil</button>
-      `;
+      li.innerHTML = `<h4>${post.title}</h4><p>${post.content}</p><button data-index="${index}" class="deletePost">Sil</button>`;
       postList.appendChild(li);
     });
     document.getElementById('totalPosts').textContent = posts.length;
@@ -40,14 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPosts();
 
   addPostBtn.addEventListener('click', () => {
-    if (!postTitle.value || !postContent.value) {
-      alert('Lütfen başlık ve içerik girin.');
-      return;
-    }
+    if (!postTitle.value || !postContent.value) return alert('Lütfen başlık ve içerik girin.');
     posts.push({ title: postTitle.value, content: postContent.value });
     localStorage.setItem('posts', JSON.stringify(posts));
-    postTitle.value = "";
-    postContent.value = "";
+    postTitle.value = ""; postContent.value = "";
     renderPosts();
   });
 
@@ -64,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const uploadImage = document.getElementById('uploadImage');
   const imageCategory = document.getElementById('imageCategory');
   const galleryPreview = document.getElementById('galleryPreview');
-
   let gallery = JSON.parse(localStorage.getItem('gallery')) || [];
 
   function renderGallery() {
@@ -75,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       div.dataset.type = item.category;
       div.innerHTML = `
         <img src="${item.src}" alt="gallery-${index}">
+        <span>${item.category}</span>
         <button class="deleteBtn" data-index="${index}">Sil</button>
       `;
       galleryPreview.appendChild(div);
@@ -87,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
   uploadImage.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = function(event) {
       gallery.push({ src: event.target.result, category: imageCategory.value });
