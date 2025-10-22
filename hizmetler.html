@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hizmetler — Hayal Garden</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/logo.png">
+
+  <style>
+    /* HERO */
+    .page-hero {
+      background: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url("img/hizmetler-bg.jpg") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .page-hero h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .service-card .card-body {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .service-card h4 {
+      color: #d69fc7;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .why-us {
+      background: #f8f5f9;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 70px;
+    }
+
+    .why-us h3 {
+      color: #c97bb7;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .why-us p {
+      color: #555;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-cta {
+      text-align: center;
+      margin: 80px 0;
+    }
+
+    .contact-cta a {
+      background: #d8b4fe;
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .contact-cta a:hover {
+      background: #c58df0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="img/logo.jpg" alt="Hayal Garden Logo" width="56" height="56">
+        <div class="brand-info">
+          <h1>Hayal Garden</h1>
+          <p class="tag">Düğün mekanları • Organizasyon fikirleri • Fotoğraf rehberi</p>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Anasayfa</a>
+        <a href="mekanlar.html">Mekanlar</a>
+        <a href="hizmetler.html" class="active">Hizmetler</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+      </nav>
+
+      <button class="burger" aria-label="Menüyü aç">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <h2>Hayalinizdeki Organizasyon İçin Her Şey Burada</h2>
+    <p>Profesyonel ekibimizle, her detayı sizin için düşünüyoruz</p>
+  </section>
+
+  <!-- HİZMETLER -->
+  <section class="section">
+    <div class="wrap">
+      <h3 class="section-title" style="text-align:center; color:#b96bb1;">Sunduğumuz Hizmetler</h3>
+
+      <div class="services">
+        <div class="service-card">
+          <img src="img/organizasyon.jpg" alt="Düğün Organizasyonu">
+          <div class="card-body">
+            <h4>Düğün & Davet Organizasyonu</h4>
+            <p>Konsept tasarımı, dekorasyon, masa düzeni ve tüm detaylar profesyonel ekibimiz tarafından hazırlanır.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="img/fotograf.jpg" alt="Fotoğraf ve Video">
+          <div class="card-body">
+            <h4>Fotoğraf & Video Çekimi</h4>
+            <p>Unutulmaz anlarınızı profesyonel ekipmanlarla ölümsüzleştiriyoruz. Drone çekimleri ve sinematik videolar dahil.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="img/catering.jpg" alt="Catering Hizmeti">
+          <div class="card-body">
+            <h4>Catering & Menü Hizmeti</h4>
+            <p>Her damak zevkine uygun, özenle seçilmiş menülerle davetinizi lezzetli bir şölene dönüştürüyoruz.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="img/dekorasyon.jpg" alt="Dekorasyon Hizmeti">
+          <div class="card-body">
+            <h4>Dekorasyon & Konsept Tasarımı</h4>
+            <p>Bohem, rustik veya modern... Tarzınızı yansıtan, özel temalı dekorasyon çözümleri sunuyoruz.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="img/muzik.jpg" alt="Canlı Müzik ve DJ">
+          <div class="card-body">
+            <h4>Canlı Müzik & DJ Performansı</h4>
+            <p>Her anınıza uygun müzik atmosferi. Düğün girişleri, danslar ve eğlence bölümleri için profesyonel ekip.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="img/planlama.jpg" alt="Etkinlik Planlama">
+          <div class="card-body">
+            <h4>Etkinlik Planlama & Danışmanlık</h4>
+            <p>Davetten önce tüm süreci sizinle birlikte planlıyoruz. Sorunsuz, eksiksiz bir organizasyon garantisi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEDEN BİZ -->
+  <div class="wrap">
+    <div class="why-us">
+      <h3>Neden Hayal Garden?</h3>
+      <p>Çünkü biz sadece bir organizasyon firması değiliz — her çiftin hikayesini kendi tarzında kutlamasını sağlıyoruz.  
+      Detaylara verdiğimiz önem, iletişimdeki samimiyet ve yaratıcı fikirlerle, sizin gününüz bizim için de özel.</p>
+    </div>
+  </div>
+
+  <!-- İLETİŞİM ÇAĞRISI -->
+  <div class="contact-cta">
+    <h3>Bize Ulaşın</h3>
+    <p>Hayalinizdeki etkinliği planlamak için hemen iletişime geçin.</p>
+    <a href="hakkimizda.html">İletişim Kur</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="copyright">
+        © <span id="year"></span> Hayal Garden — Tüm hakları saklıdır.
+      </div>
+      <nav class="tiny-nav">
+        <a href="#">Gizlilik</a>
+        <a href="#">KVKK</a>
+        <a href="#">S.S.S.</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".main-nav");
+    burger && burger.addEventListener("click", () => nav.classList.toggle("open"));
+  </script>
+</body>
+</html>
