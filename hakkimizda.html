@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hayal Garden | Hakkımızda</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/hakkimizda.css">
   <link rel="icon" href="img/logo.jpg">
 </head>
 <body>
@@ -18,7 +18,6 @@
           <p class="tag">Düğün mekanları • Organizasyon fikirleri • Fotoğraf rehberi</p>
         </div>
       </a>
-
       <nav class="main-nav" aria-label="Ana menü">
         <a href="index.html#anasayfa">Anasayfa</a>
         <a href="mekanlar.html">Mekanlar</a>
@@ -27,18 +26,16 @@
         <a href="hakkimizda.html">Hakkımızda</a>
         <a href="iletisim.html">İletişim</a>
       </nav>
-
       <button class="burger" aria-label="Menüyü aç">☰</button>
     </div>
   </header>
 
-  <!-- HERO / KAPAK -->
+  <!-- HERO -->
   <section class="hero hakkimizda-hero">
     <div class="wrap hero-inner">
       <div class="hero-text">
         <h2>Hayal Garden Hakkında</h2>
-        <p>Hayal Garden, düğün ve etkinlik planlamanızı kolaylaştırmak için tasarlanmış, yaratıcı ve güvenilir bir rehberdir.  
-        Özenle seçilmiş mekanlar, tedarikçiler ve ilham verici içeriklerle hayallerinizi gerçeğe dönüştürür.</p>
+        <p>Hayal Garden, düğün ve etkinlik planlamanızı kolaylaştırmak için tasarlanmış, yaratıcı ve güvenilir bir rehberdir.</p>
       </div>
       <div class="hero-image">
         <img src="img/logo-yani.png" alt="Hayal Garden" loading="lazy">
@@ -46,25 +43,69 @@
     </div>
   </section>
 
-  <!-- MİSYON & VİZYON -->
-  <section class="section light">
+  <!-- HİKAYE / TIMELINE -->
+  <section class="section light story-section">
     <div class="wrap">
-      <h3>Misyonumuz</h3>
-      <p>Her çiftin hayalindeki düğünü en güzel şekilde planlamasına yardımcı olmak, güvenilir bilgiler ve tedarikçiler sunmak.</p>
-
-      <h3>Vizyonumuz</h3>
-      <p>Türkiye genelinde en çok güvenilen düğün ve etkinlik rehberi olmak, modern ve ilham verici içerikler sağlamak.</p>
+      <h3>Bizim Hikayemiz</h3>
+      <div class="story-grid">
+        <div class="story-card">
+          <h4>2015</h4>
+          <p>Hayal Garden kuruldu, ilk düğün organizasyonlarıyla sektöre adım attık.</p>
+        </div>
+        <div class="story-card">
+          <h4>2018</h4>
+          <p>Online platformumuzu yayına aldık ve mekan rehberimizi geliştirdik.</p>
+        </div>
+        <div class="story-card">
+          <h4>2023</h4>
+          <p>Tasarım ve planlama danışmanlığı ile binlerce çifte yardımcı olduk.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- İLETİŞİM ÖZETİ -->
-  <section class="section light">
-    <div class="wrap contact-summary">
-      <h3>Bize Ulaşın</h3>
-      <p>Her türlü soru ve öneriniz için iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.</p>
-      <p>Telefon: +90 555 000 00 00</p>
-      <p>Email: hayalgardenornek@gmail.com</p>
-      <p>Adres: Çankırı/Merkez</p>
+  <!-- MİSYON / VİZYON / DEĞERLER -->
+  <section class="section light mission-section">
+    <div class="wrap mission-grid">
+      <div class="mission-card">
+        <h4>Misyonumuz</h4>
+        <p>Her çiftin hayalindeki düğünü gerçeğe dönüştürmek için güvenilir içerik ve öneriler sunmak.</p>
+      </div>
+      <div class="mission-card">
+        <h4>Vizyonumuz</h4>
+        <p>Türkiye genelinde en güvenilir ve modern düğün rehberi olmak, ilham verici içerikler sağlamak.</p>
+      </div>
+      <div class="mission-card">
+        <h4>Değerlerimiz</h4>
+        <p>Samimiyet, güven ve yaratıcılık. Her adımda müşteri memnuniyeti önceliğimizdir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- İSTATİSTİKLER -->
+  <section class="section stats-section">
+    <div class="wrap stats-grid">
+      <div class="stat-card">
+        <h4>500+</h4>
+        <p>Mutlu Çift</p>
+      </div>
+      <div class="stat-card">
+        <h4>300+</h4>
+        <p>Organizasyon</p>
+      </div>
+      <div class="stat-card">
+        <h4>150+</h4>
+        <p>Tedarikçi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="wrap cta-wrap">
+      <h3>Hayalinizdeki düğünü birlikte tasarlayalım!</h3>
+      <p>Planlamaya başlamak için bizimle iletişime geçin veya rezervasyon yapın.</p>
+      <a href="iletisim.html" class="btn-primary">Bize Ulaş</a>
     </div>
   </section>
 
@@ -80,11 +121,9 @@
     </div>
   </footer>
 
-  <!-- Ana JS dosyası -->
+  <!-- Ana JS -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobil menü toggle
     (function(){
       const burger = document.querySelector('.burger');
       const nav = document.querySelector('.main-nav');
