@@ -82,12 +82,18 @@
       </section>
 
      
-      <!-- Gallery -->
-      <section id="gallery" class="panel">
-        <h2>Galeri</h2>
-        <input type="file" id="uploadImage" accept="image/*">
-        <div id="galleryPreview" class="gallery-grid"></div>
-      </section>
+<section id="gallery" class="panel">
+  <h2>Galeri</h2>
+  <input type="file" id="uploadImage" accept="image/*">
+  <select id="imageCategory">
+    <option value="dugun">Düğün</option>
+    <option value="mekan">Mekan</option>
+    <option value="detay">Detay</option>
+    <option value="hazirlik">Hazırlık</option>
+  </select>
+  <div id="galleryPreview" class="gallery-grid"></div>
+</section>
+
 
       <!-- Settings -->
       <section id="settings" class="panel">
@@ -138,3 +144,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
