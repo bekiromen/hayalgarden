@@ -45,19 +45,36 @@ body {
 .main-nav.open { display:block; }
 .burger { display:none; font-size:24px; background:none; border:none; cursor:pointer; }
 
-/* Hero */
 .hero.hakkimizda-hero {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:60px 0;
-  background:linear-gradient(120deg, #ffc1cc, #ffe4e1);
+  padding:80px 20px;
+  background:linear-gradient(rgba(255,182,193,0.8), rgba(255,192,203,0.8)), url('img/pastel-wallpaper.jpg') center/cover no-repeat;
   border-radius:8px;
-  margin-bottom:40px;
+  color:#fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
-.hero-text h2 { font-size:36px; margin-bottom:20px; }
-.hero-text p { font-size:18px; }
-.hero-image img { width:300px; }
+
+.hero-text h2 {
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.hero-text p {
+  font-size:18px;
+  max-width:450px;
+}
+
+.hero-image img {
+  width:280px;
+}
+
+@media(max-width:768px){
+  .hero.hakkimizda-hero { flex-direction:column; text-align:center; }
+  .hero-image img { margin-top:20px; width:200px; }
+}
+
 
 /* Story / Timeline */
 .story-grid {
