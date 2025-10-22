@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   // --- MENÜ GEÇİŞLERİ ---
   const menuItems = document.querySelectorAll('.sidebar li[data-section]');
   const panels = document.querySelectorAll('.panel');
@@ -15,18 +14,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- BLOG ---
+  // --- BLOG YAZILARI ---
   const postTitle = document.getElementById('postTitle');
   const postContent = document.getElementById('postContent');
   const addPostBtn = document.getElementById('addPostBtn');
   const postList = document.getElementById('postList');
+
   let posts = JSON.parse(localStorage.getItem('posts')) || [];
 
   function renderPosts() {
     postList.innerHTML = "";
     posts.forEach((post, index) => {
       const li = document.createElement('li');
-      li.innerHTML = `<h4>${post.title}</h4><p>${post.content}</p><button data-index="${index}" class="deletePost">Sil</button>`;
+      li.innerHTML = `
+        <h4>${post.title}</h4>
+        <p>${post.content}</p>
+        <button data-index="${index}" class="deletePost">Sil</button>
+      `;
       postList.appendChild(li);
     });
     document.getElementById('totalPosts').textContent = posts.length;
@@ -35,10 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPosts();
 
   addPostBtn.addEventListener('click', () => {
-    if (!postTitle.value || !postContent.value) return alert('Lütfen başlık ve içerik girin.');
+    if (!postTitle.value || !postContent.value) {
+      alert('Lütfen başlık ve içerik girin.');
+      return;
+    }
     posts.push({ title: postTitle.value, content: postContent.value });
     localStorage.setItem('posts', JSON.stringify(posts));
-    postTitle.value = ""; postContent.value = "";
+    postTitle.value = "";
+    postContent.value = "";
     renderPosts();
   });
 
@@ -51,21 +59,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- GALERİ ---
+  // --- GALERİ (SUNUCUYA YÜKLEME) ---
   const uploadImage = document.getElementById('uploadImage');
   const imageCategory = document.getElementById('imageCategory');
   const galleryPreview = document.getElementById('galleryPreview');
-  let gallery = JSON.parse(localStorage.getItem('gallery')) || [];
+
+  let gallery = []; // Sunucudan çekilecek veya admin eklerken push
 
   function renderGallery() {
     galleryPreview.innerHTML = "";
     gallery.forEach((item, index) => {
       const div = document.createElement('div');
       div.classList.add('gallery-item');
-      div.dataset.type = item.category;
       div.innerHTML = `
         <img src="${item.src}" alt="gallery-${index}">
-        <span>${item.category}</span>
         <button class="deleteBtn" data-index="${index}">Sil</button>
       `;
       galleryPreview.appendChild(div);
@@ -75,24 +82,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderGallery();
 
-  uploadImage.addEventListener('change', (e) => {
+  // Fotoğraf yükleme
+  uploadImage.addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      gallery.push({ src: event.target.result, category: imageCategory.value });
-      localStorage.setItem('gallery', JSON.stringify(gallery));
-      renderGallery();
-      e.target.value = "";
-    };
-    reader.readAsDataURL(file);
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const response = await fetch('upload.php', { method: 'POST', body: formData });
+      const data = await response.json();
+
+      if (data.status === 'success') {
+        gallery.push({ src: data.url, category: imageCategory.value });
+        renderGallery();
+        e.target.value = "";
+      } else {
+        alert('Yükleme başarısız!');
+      }
+    } catch (err) {
+      alert('Sunucuya bağlanırken hata oluştu!');
+      console.error(err);
+    }
   });
 
+  // Fotoğraf silme
   galleryPreview.addEventListener('click', (e) => {
     if (e.target.classList.contains('deleteBtn')) {
       const index = e.target.getAttribute('data-index');
+      // Sunucudan silme için ekstra PHP endpoint gerekir
       gallery.splice(index, 1);
-      localStorage.setItem('gallery', JSON.stringify(gallery));
       renderGallery();
     }
   });
@@ -135,5 +155,4 @@ document.addEventListener("DOMContentLoaded", () => {
       renderReservations();
     }
   });
-
 });
