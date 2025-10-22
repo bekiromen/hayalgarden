@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hayal Garden | Hakkımızda</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="img/logo.jpg">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="img/logo.jpg" alt="Hayal Garden Logo" width="56" height="56">
+        <div class="brand-info">
+          <h1>Hayal Garden</h1>
+          <p class="tag">Düğün mekanları • Organizasyon fikirleri • Fotoğraf rehberi</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Ana menü">
+        <a href="index.html#anasayfa">Anasayfa</a>
+        <a href="mekanlar.html">Mekanlar</a>
+        <a href="hizmetler.html">Hizmetler</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="iletisim.html">İletişim</a>
+      </nav>
+
+      <button class="burger" aria-label="Menüyü aç">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO / KAPAK -->
+  <section class="hero hakkimizda-hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <h2>Hayal Garden Hakkında</h2>
+        <p>Hayal Garden, düğün ve etkinlik planlamanızı kolaylaştırmak için tasarlanmış, yaratıcı ve güvenilir bir rehberdir.  
+        Özenle seçilmiş mekanlar, tedarikçiler ve ilham verici içeriklerle hayallerinizi gerçeğe dönüştürür.</p>
+      </div>
+      <div class="hero-image">
+        <img src="img/logo-yani.png" alt="Hayal Garden" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- MİSYON & VİZYON -->
+  <section class="section light">
+    <div class="wrap">
+      <h3>Misyonumuz</h3>
+      <p>Her çiftin hayalindeki düğünü en güzel şekilde planlamasına yardımcı olmak, güvenilir bilgiler ve tedarikçiler sunmak.</p>
+
+      <h3>Vizyonumuz</h3>
+      <p>Türkiye genelinde en çok güvenilen düğün ve etkinlik rehberi olmak, modern ve ilham verici içerikler sağlamak.</p>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM ÖZETİ -->
+  <section class="section light">
+    <div class="wrap contact-summary">
+      <h3>Bize Ulaşın</h3>
+      <p>Her türlü soru ve öneriniz için iletişime geçebilirsiniz. Size en kısa sürede dönüş yapacağız.</p>
+      <p>Telefon: +90 555 000 00 00</p>
+      <p>Email: hayalgardenornek@gmail.com</p>
+      <p>Adres: Çankırı/Merkez</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="copyright">© <span id="year"></span> Hayal Garden — Tüm hakları saklıdır.</div>
+      <nav class="tiny-nav">
+        <a href="#">Gizlilik</a>
+        <a href="#">KVKK</a>
+        <a href="#">S.S.S.</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Ana JS dosyası -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobil menü toggle
+    (function(){
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.main-nav');
+      burger && burger.addEventListener('click', ()=> nav.classList.toggle('open'));
+    })();
+  </script>
+</body>
+</html>
