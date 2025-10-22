@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mekanlar — Hayal Garden</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="img/logo.jpg" alt="Hayal Garden Logo" width="56" height="56">
+        <div class="brand-info">
+          <h1>Hayal Garden</h1>
+          <p class="tag">Düğün mekanları • Organizasyon fikirleri • Fotoğraf rehberi</p>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Anasayfa</a>
+        <a href="mekanlar.html" class="active">Mekanlar</a>
+        <a href="hizmetler.html">Hizmetler</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+      </nav>
+
+      <button class="burger" aria-label="Menüyü aç">☰</button>
+    </div>
+  </header>
+
+  <!-- SAYFA BAŞI (Hero kısmı) -->
+  <section class="page-hero">
+    <div class="wrap">
+      <h2>Hayalinizdeki Mekanı Keşfedin</h2>
+      <p>Doğanın içinde, şehir manzaralı ya da sade salon konseptinde yüzlerce mekan seçeneği.</p>
+    </div>
+  </section>
+
+  <!-- MEKAN KARTLARI -->
+  <section class="section">
+    <div class="wrap">
+      <h3>Öne Çıkan Mekanlar</h3>
+      <p class="muted">Her zevke uygun özel mekanlardan seçkiler</p>
+
+      <div class="cards-grid">
+        <!-- Mekan 1 -->
+        <article class="card">
+          <img src="img/gül-bahcesi.jpg" alt="Gül Bahçesi Davet">
+          <div class="card-body">
+            <h4>Gül Bahçesi Davet</h4>
+            <p class="muted">100-200 kişi • Bahçe & Kapalı alan</p>
+            <p>Geniş otopark, vintage ışıklandırma ve canlı çiçek konseptiyle doğal bir davet ortamı.</p>
+          </div>
+        </article>
+
+        <!-- Mekan 2 -->
+        <article class="card">
+          <img src="img/hayal.jpg" alt="Hayal Terası">
+          <div class="card-body">
+            <h4>Hayal Terası</h4>
+            <p class="muted">50-120 kişi • Teras</p>
+            <p>Şehir manzaralı teras konsepti, modern detaylar ve akşam organizasyonları için mükemmel bir alan.</p>
+          </div>
+        </article>
+
+        <!-- Mekan 3 -->
+        <article class="card">
+          <img src="img/kır.jpg" alt="Mini Kır Daveti">
+          <div class="card-body">
+            <h4>Mini Kır Daveti</h4>
+            <p class="muted">30-70 kişi • Kır konsepti</p>
+            <p>Rustik dekor, doğal ışık ve çocuklar için eğlenceli alanlarıyla samimi bir kutlama atmosferi.</p>
+          </div>
+        </article>
+
+        <!-- Mekan 4 -->
+        <article class="card">
+          <img src="img/salon.jpg" alt="Beyaz Salon">
+          <div class="card-body">
+            <h4>Beyaz Salon</h4>
+            <p class="muted">150-250 kişi • Kapalı Salon</p>
+            <p>Modern aydınlatma, yüksek tavan ve şık masa düzeniyle klasik düğün konseptlerine uygun.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- REZERVASYON ALANI -->
+  <section class="section light">
+    <div class="wrap">
+      <h3>Rezervasyon Oluştur</h3>
+      <form id="reservationForm">
+        <input type="text" id="resName" placeholder="İsim" required>
+        <input type="tel" id="resPhone" placeholder="Telefon Numarası" required pattern="[0-9]{10,11}">
+        <input type="date" id="resDate" required>
+        <input type="number" id="resPeople" placeholder="Kişi Sayısı" required min="1">
+        <button type="submit">Rezervasyon Yap</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="copyright">
+        © <span id="year"></span> Hayal Garden — Tüm hakları saklıdır.
+      </div>
+      <nav class="tiny-nav">
+        <a href="#">Gizlilik</a>
+        <a href="#">KVKK</a>
+        <a href="#">S.S.S.</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobil menü
+    (function() {
+      const burger = document.querySelector(".burger");
+      const nav = document.querySelector(".main-nav");
+      burger && burger.addEventListener("click", () => nav.classList.toggle("open"));
+    })();
+
+    // Rezervasyon kaydetme
+    const form = document.getElementById("reservationForm");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const data = {
+        id: Date.now(),
+        name: document.getElementById("resName").value.trim(),
+        phone: document.getElementById("resPhone").value.trim(),
+        date: document.getElementById("resDate").value,
+        people: document.getElementById("resPeople").value,
+      };
+      const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+      reservations.push(data);
+      localStorage.setItem("reservations", JSON.stringify(reservations));
+      alert("Rezervasyon isteğiniz alındı. 🌸");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
