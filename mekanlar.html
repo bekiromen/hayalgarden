@@ -6,6 +6,79 @@
   <title>Mekanlar — Hayal Garden</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/logo.png">
+  <style>
+    /* Ek özel stil dokunuşları */
+    .page-hero {
+      background: url("img/hero-mekan.jpg") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .page-hero h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-bar button {
+      background: #f1f1f1;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    .filter-bar button:hover,
+    .filter-bar button.active {
+      background: #d8b4fe;
+      color: #fff;
+    }
+
+    .card {
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .info-box {
+      background: #f9f9f9;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin: 60px auto;
+      max-width: 800px;
+    }
+
+    .info-box p {
+      color: #444;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
 
@@ -32,77 +105,74 @@
     </div>
   </header>
 
-  <!-- SAYFA BAŞI (Hero kısmı) -->
+  <!-- HERO -->
   <section class="page-hero">
-    <div class="wrap">
-      <h2>Hayalinizdeki Mekanı Keşfedin</h2>
-      <p>Doğanın içinde, şehir manzaralı ya da sade salon konseptinde yüzlerce mekan seçeneği.</p>
-    </div>
+    <h2>Hayalinizdeki Mekanı Keşfedin</h2>
+    <p>Şehir manzaralı teraslardan rustik kır alanlarına, her zevke uygun davet mekanları</p>
   </section>
 
-  <!-- MEKAN KARTLARI -->
+  <!-- FİLTRE MENÜ -->
+  <div class="wrap">
+    <div class="filter-bar">
+      <button class="active" data-filter="all">Tümü</button>
+      <button data-filter="bahce">Bahçe</button>
+      <button data-filter="teras">Teras</button>
+      <button data-filter="salon">Salon</button>
+      <button data-filter="kir">Kır</button>
+    </div>
+  </div>
+
+  <!-- MEKANLAR -->
   <section class="section">
     <div class="wrap">
-      <h3>Öne Çıkan Mekanlar</h3>
-      <p class="muted">Her zevke uygun özel mekanlardan seçkiler</p>
-
-      <div class="cards-grid">
-        <!-- Mekan 1 -->
-        <article class="card">
-          <img src="img/gül-bahcesi.jpg" alt="Gül Bahçesi Davet">
+      <div class="cards-grid" id="mekanGrid">
+        <article class="card" data-type="bahce">
+          <img src="img/gül-bahcesi.jpg" alt="Gül Bahçesi">
           <div class="card-body">
             <h4>Gül Bahçesi Davet</h4>
-            <p class="muted">100-200 kişi • Bahçe & Kapalı alan</p>
-            <p>Geniş otopark, vintage ışıklandırma ve canlı çiçek konseptiyle doğal bir davet ortamı.</p>
+            <p class="muted">Bahçe & Kapalı Alan • 150 Kişi</p>
+            <p>Romantik atmosferiyle öne çıkan, ışıklandırması ve canlı çiçek dekorasyonu ile fark yaratan mekan.</p>
           </div>
         </article>
 
-        <!-- Mekan 2 -->
-        <article class="card">
+        <article class="card" data-type="teras">
           <img src="img/hayal.jpg" alt="Hayal Terası">
           <div class="card-body">
             <h4>Hayal Terası</h4>
-            <p class="muted">50-120 kişi • Teras</p>
-            <p>Şehir manzaralı teras konsepti, modern detaylar ve akşam organizasyonları için mükemmel bir alan.</p>
+            <p class="muted">Teras • 120 Kişi</p>
+            <p>Şehir ışıkları eşliğinde, modern detaylarla tasarlanmış akşam davetleri için eşsiz bir teras.</p>
           </div>
         </article>
 
-        <!-- Mekan 3 -->
-        <article class="card">
-          <img src="img/kır.jpg" alt="Mini Kır Daveti">
+        <article class="card" data-type="kir">
+          <img src="img/kır.jpg" alt="Kır Daveti">
           <div class="card-body">
-            <h4>Mini Kır Daveti</h4>
-            <p class="muted">30-70 kişi • Kır konsepti</p>
-            <p>Rustik dekor, doğal ışık ve çocuklar için eğlenceli alanlarıyla samimi bir kutlama atmosferi.</p>
+            <h4>Doğa Kır Daveti</h4>
+            <p class="muted">Kır Alanı • 100 Kişi</p>
+            <p>Ahşap detaylar, rustik masa süslemeleri ve açık hava konforuyla sıcak bir kır konsepti.</p>
           </div>
         </article>
 
-        <!-- Mekan 4 -->
-        <article class="card">
+        <article class="card" data-type="salon">
           <img src="img/salon.jpg" alt="Beyaz Salon">
           <div class="card-body">
             <h4>Beyaz Salon</h4>
-            <p class="muted">150-250 kişi • Kapalı Salon</p>
-            <p>Modern aydınlatma, yüksek tavan ve şık masa düzeniyle klasik düğün konseptlerine uygun.</p>
+            <p class="muted">Salon • 200 Kişi</p>
+            <p>Yüksek tavan, modern aydınlatma ve sade dekorasyonu ile klasik düğün konseptlerine uygun şık bir salon.</p>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- REZERVASYON ALANI -->
-  <section class="section light">
-    <div class="wrap">
-      <h3>Rezervasyon Oluştur</h3>
-      <form id="reservationForm">
-        <input type="text" id="resName" placeholder="İsim" required>
-        <input type="tel" id="resPhone" placeholder="Telefon Numarası" required pattern="[0-9]{10,11}">
-        <input type="date" id="resDate" required>
-        <input type="number" id="resPeople" placeholder="Kişi Sayısı" required min="1">
-        <button type="submit">Rezervasyon Yap</button>
-      </form>
-    </div>
-  </section>
+  <!-- BİLGİ KUTUSU -->
+  <div class="info-box">
+    <h3>Doğru Mekanı Nasıl Seçersiniz?</h3>
+    <p>
+      Davetinizin konseptine, misafir sayısına ve mevsime göre seçim yapmak her zaman en doğru tercih olur.  
+      Hayal Garden ekibi olarak size en uygun mekan için ücretsiz danışmanlık sağlıyoruz.
+    </p>
+  </div>
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -118,32 +188,28 @@
     </div>
   </footer>
 
+  <!-- JS -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Mobil menü
-    (function() {
-      const burger = document.querySelector(".burger");
-      const nav = document.querySelector(".main-nav");
-      burger && burger.addEventListener("click", () => nav.classList.toggle("open"));
-    })();
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".main-nav");
+    burger && burger.addEventListener("click", () => nav.classList.toggle("open"));
 
-    // Rezervasyon kaydetme
-    const form = document.getElementById("reservationForm");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const data = {
-        id: Date.now(),
-        name: document.getElementById("resName").value.trim(),
-        phone: document.getElementById("resPhone").value.trim(),
-        date: document.getElementById("resDate").value,
-        people: document.getElementById("resPeople").value,
-      };
-      const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
-      reservations.push(data);
-      localStorage.setItem("reservations", JSON.stringify(reservations));
-      alert("Rezervasyon isteğiniz alındı. 🌸");
-      form.reset();
+    // Filtreleme
+    const buttons = document.querySelectorAll(".filter-bar button");
+    const cards = document.querySelectorAll(".card");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const type = btn.dataset.filter;
+        cards.forEach(card => {
+          card.style.display = (type === "all" || card.dataset.type === type) ? "block" : "none";
+        });
+      });
     });
   </script>
 </body>
