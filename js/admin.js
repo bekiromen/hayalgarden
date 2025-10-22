@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- BLOG YAZILARI ---
+  // --- BLOG ---
   const postTitle = document.getElementById('postTitle');
   const postContent = document.getElementById('postContent');
   const addPostBtn = document.getElementById('addPostBtn');
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gallery.forEach((item, index) => {
       const div = document.createElement('div');
       div.classList.add('gallery-item');
-      div.dataset.type = item.category; // Kategori
+      div.dataset.type = item.category;
       div.innerHTML = `
         <img src="${item.src}" alt="gallery-${index}">
         <button class="deleteBtn" data-index="${index}">Sil</button>
@@ -90,11 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const reader = new FileReader();
     reader.onload = function(event) {
-      const newImage = {
-        src: event.target.result,
-        category: imageCategory.value // Seçilen kategori
-      };
-      gallery.push(newImage);
+      gallery.push({ src: event.target.result, category: imageCategory.value });
       localStorage.setItem('gallery', JSON.stringify(gallery));
       renderGallery();
       e.target.value = "";
