@@ -44,7 +44,7 @@
         <h2>Hayalinizdeki düğünü birlikte tasarlayalım</h2>
         <p>Özenle seçilmiş mekanlar, gerçek düğün hikâyeleri ve ilham veren görseller. Planlamadan önce fikir almak için doğru yerdesiniz.</p>
         <p>
-          <a class="btn-primary" href="hizmetler.html">Hizmetlerr</a>
+          <a class="btn-primary" href="hizmetler.html">Hizmetler</a>
         </p>
       </div>
 
@@ -60,12 +60,14 @@
     <h3>Rezervasyon Yap</h3>
     <form id="reservationForm">
       <input type="text" id="resName" placeholder="İsim" required>
+      <input type="tel" id="resPhone" placeholder="Telefon Numarası" required pattern="[0-9]{10,11}" title="Lütfen geçerli bir telefon numarası girin">
       <input type="date" id="resDate" required>
       <input type="number" id="resPeople" placeholder="Kişi Sayısı" required min="1">
       <button type="submit">Rezervasyon Yap</button>
     </form>
   </div>
 </section>
+
 
 <script>
   const reservationForm = document.getElementById('reservationForm');
@@ -349,4 +351,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
